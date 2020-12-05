@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'pages#home'
-  get 'pages/my_todo_items'
+  authenticated :user do
+    root "pages#my_todo_items", as: :authenticated_root
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
