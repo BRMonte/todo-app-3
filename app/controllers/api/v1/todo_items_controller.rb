@@ -3,7 +3,7 @@ class Api::V1::TodoItemsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @todo_items = TodoItem.all
+    @todo_items = current_user.todo_items.all
   end
 
   def show
